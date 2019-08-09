@@ -1,5 +1,5 @@
 pipeline {
-    agent any {
+    agent { label 'teja'}
         stages {
             stage('update ubuntu'){
                 steps{    
