@@ -1,6 +1,6 @@
 pipeline {
-    agent any{
-        stages{
+    agent any {
+        stages {
             stage('update ubuntu'){
                 steps{    
                    sh 'sudo apt-get update'
