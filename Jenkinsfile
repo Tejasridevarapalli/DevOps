@@ -1,14 +1,14 @@
 pipeline {
-    agent any{
-        stages{
-            stage('update ubuntu'){
-                steps{    
+    agent { label "teja"}
+        stages {
+            stage('update ubuntu') {
+                steps {    
                    sh 'sudo apt-get update'
                 }
             }
-            stage('Install chefDk'){
-                steps{
-                   script{
+            stage('Install chefDk') {
+                steps {
+                   script {
                        def chefdkExists = fileExists '/usr/bin/chef-client'
                        if (chefdkExists){
                            echo 'skipping chef install....already installed'
@@ -21,20 +21,20 @@ pipeline {
                    }
                }
            }
-           stage('Download cookbook'){
+           stage('Download cookbook')  {
                 steps{
                      
                     git credentialsId: 'GitHub-creds', url: 'git@github.com:Tejasridevarapalli/DevOps.git'
                 }
            }
 
-           stage('Install Ruby and Test kitchen'){
+           stage('Install Ruby and Test kitchen') {
                steps{
                    sh 'sudo apt-get install -y rubygems ruby-dev'
                    sh 'cheg gem install kitchen-docker'
                }
            }
-           stage('Run Test kitchen'){
+           stage('Run Test kitchen') {
                steps{
                    sh 'sudo kitchen test'
                }
@@ -49,6 +49,6 @@ pipeline {
                    sh 'sudo kitchen converge'
                }
            }
-} 
-}
+       }  
+   }
 }
