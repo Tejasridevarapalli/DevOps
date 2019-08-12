@@ -1,7 +1,14 @@
 pipeline {
+<<<<<<< HEAD
         stages {
             stage('update ubuntu') {
                 steps {    
+=======
+    agent { label 'teja'}
+        stages {
+            stage('update ubuntu'){
+                steps{    
+>>>>>>> e6eafa5ca6299e9a03ee5890620479431400ab24
                    sh 'sudo apt-get update'
                 }
             }
@@ -48,6 +55,12 @@ pipeline {
                    sh 'sudo kitchen converge'
                }
            }
+<<<<<<< HEAD
        }  
    }
 }
+=======
+ 
+}
+}
+>>>>>>> e6eafa5ca6299e9a03ee5890620479431400ab24
